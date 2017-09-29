@@ -2,10 +2,22 @@
   "name": "just_messi_things",
   "version": "1.0.0",
   "description": "reddit bot about Messi",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "babel src -d dist",
+    "start": "npm run build && node dist/app.js"
   },
   "author": "JW",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^4.0.0",
+    "snoostorm": "0.0.5",
+    "snoowrap": "^1.14.2"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-preset-env": "^1.6.0"
+  }
 }
