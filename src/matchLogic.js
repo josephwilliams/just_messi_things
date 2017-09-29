@@ -30,6 +30,7 @@ function getCompetitionById(competitionId) {
     case CHAMPIONS_LEAGUE_COMPETITION_ID:
       return 'Champions League';
     default:
+      // TODO: find copa del rey competition id.
       return COPA_DEL_REY_COMPETITION_ID;
   }
 }
@@ -49,8 +50,8 @@ function getCompetition(fixture) {
 function getIsWin(fixture) {
   const isHomeGame = getIsHomeGame(fixture);
   const score = lodashGet(fixture, 'result');
-  const goalsHomeTeam = Number(score.goalsHomeTeam);
-  const goalsAwayTeam = Number(score.goalsAwayTeam);
+  const goalsHomeTeam = lodashGet(score, 'goalsHomeTeam', 0);
+  const goalsAwayTeam = lodashGet(score, 'goalsAwayTeam', 0);
   const isWinAtHome = (isHomeGame && (goalsHomeTeam > goalsAwayTeam));
   const isWinAway = (!isHomeGame && (goalsAwayTeam > goalsHomeTeam));
   return (isWinAtHome || isWinAway);
