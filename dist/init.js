@@ -23,14 +23,14 @@ function initializeRedditClient() {
   _dotenv2.default.config();
 
   // Build Snoowrap and Snoostorm clients
-  var redditAuth = new _snoowrap2.default({
-    userAgent: 'reddit-bot-example-node',
-    clientId: process.env.CLIENT_ID,
-    clientSecret: process.env.CLIENT_SECRET,
-    username: process.env.REDDIT_USER,
-    password: process.env.REDDIT_PASS
-  });
-
-  var redditClient = new _snoostorm2.default(redditAuth);
-  return redditClient;
+  // const redditAuth = new Snoowrap({
+  //   userAgent: 'reddit-bot-example-node',
+  //   clientId: process.env.CLIENT_ID,
+  //   clientSecret: process.env.CLIENT_SECRET,
+  //   username: process.env.REDDIT_USER,
+  //   password: process.env.REDDIT_PASS
+  // });
+  //
+  // const redditClient = new Snoostorm(redditAuth);
+  // return redditClient;
 }
