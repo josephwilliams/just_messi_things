@@ -1,5 +1,5 @@
 import initializeRedditClient from './init';
-import getGameData from './gameApi';
+import getGameData from './api';
 
 const redditClient = initializeRedditClient();
 

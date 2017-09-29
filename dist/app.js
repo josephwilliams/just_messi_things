@@ -4,9 +4,9 @@ var _init = require('./init');
 
 var _init2 = _interopRequireDefault(_init);
 
-var _gameApi = require('./gameApi');
+var _api = require('./api');
 
-var _gameApi2 = _interopRequireDefault(_gameApi);
+var _api2 = _interopRequireDefault(_api);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -26,4 +26,4 @@ var redditClient = (0, _init2.default)();
 //   console.log('> new comment: ', comment);
 // });
 
-(0, _gameApi2.default)();
+(0, _api2.default)();

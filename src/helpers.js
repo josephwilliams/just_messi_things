@@ -1,7 +1,13 @@
-import moment from 'moment';
+import fs from 'fs';
 
 
-function isTodayMatchDay(date) {
-  // example date format: 2017-08-26T16:15:00Z
-  return;
+export function writeResponseToFile(apiResponse) {
+  fs.writeFile(
+    "./exampleApiResponseBody.json",
+    JSON.stringify(apiResponse),
+    (err) => {
+      if (err) {
+        return console.log(err);
+      }
+  });
 }

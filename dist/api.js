@@ -12,49 +12,15 @@ var _asyncToGenerator2 = require('babel-runtime/helpers/asyncToGenerator');
 
 var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
 
-var _find = require('lodash/find');
-
-var _find2 = _interopRequireDefault(_find);
-
-var _get = require('lodash/get');
-
-var _get2 = _interopRequireDefault(_get);
-
 var _superagent = require('superagent');
 
 var _superagent2 = _interopRequireDefault(_superagent);
 
 var _helpers = require('./helpers');
 
+var _matchLogic = require('./matchLogic');
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var BARCA_TEAM_ID = 81;
-var LA_LIGA_COMPETITION_ID = 455;
-var CHAMPIONS_LEAGUE_COMPETITION_ID = 464;
-var COPA_DEL_REY_COMPETITION_ID = null;
-
-function getCompetitionById(competitionId) {
-  switch (competitionId) {
-    case LA_LIGA_COMPETITION_ID:
-      return 'La Liga';
-    case CHAMPIONS_LEAGUE_COMPETITION_ID:
-      return 'Champions League';
-    default:
-      return COPA_DEL_REY_COMPETITION_ID;
-  }
-}
-
-function getBarcaGames(apiResponse) {
-  var barcaFixtures = (0, _get2.default)(apiResponse, 'fixtures', []);
-
-  barcaFixtures.forEach(function (fixture) {
-    var fixtureDate = fixture.date;
-    (0, _helpers.isTodayMatchDay)(fixtureDate);
-    var fixtureCompetitionId = fixture.competitionId;
-    var competition = getCompetitionById(fixtureCompetitionId);
-    console.log('>> competition', competition);
-  });
-}
 
 exports.default = function () {
   var _ref = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee() {
@@ -70,24 +36,24 @@ exports.default = function () {
           case 3:
             response = _context.sent;
             responseBody = response.body;
-            // writeResponseToFile(responseBody);
 
-            getBarcaGames(responseBody);
-            _context.next = 11;
+            (0, _helpers.writeResponseToFile)(responseBody);
+            (0, _matchLogic.getBarcaGames)(responseBody);
+            _context.next = 12;
             break;
 
-          case 8:
-            _context.prev = 8;
+          case 9:
+            _context.prev = 9;
             _context.t0 = _context['catch'](0);
 
             console.log('>> some error', _context.t0);
 
-          case 11:
+          case 12:
           case 'end':
             return _context.stop();
         }
       }
-    }, _callee, this, [[0, 8]]);
+    }, _callee, this, [[0, 9]]);
   }));
 
   function getGameData() {
